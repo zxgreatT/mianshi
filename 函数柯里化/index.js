@@ -193,54 +193,66 @@ lengthOfLongestSubstring('aabcc')
 
 
 // 防抖
-function debounce(fn,delay) {
+function debounce(fn, delay) {
     let timer = null
-    return function() {
-        if(timer) {
+    return function () {
+        if (timer) {
             clearTimeout(timer)
         }
-        timer = setTimeout(fn,delay)
+        timer = setTimeout(fn, delay)
     }
 }
 
 // 节流
 function throttle(fn, delay) {
     let flag = true
-    return function() {
-        if(!flag) {
+    return function () {
+        if (!flag) {
             return
         }
         flag = false
         setTimeout(() => {
-           fn() 
-           flag = true
+            fn()
+            flag = true
         }, delay);
     }
 }
 
 //对象深拷贝
-function deepClone(origin,target){
+function deepClone(origin, target) {
     //target是否存在如果不存在创建空对象
     let tar = target || {},
-    //判断是否为引用数据类型
+        //判断是否为引用数据类型
         toStr = Object.prototype.toString,
-        arrType='[object Array]';
+        arrType = '[object Array]';
 
-    for(let key in origin){
+    for (let key in origin) {
         //剥离原型链的数据
-        if(origin.hasOwnProperty(key)){
+        if (origin.hasOwnProperty(key)) {
             //判断是否为引用数据类型 对象或数组
-            if(typeof(origin[key]) === 'object' && origin[key] !== null){
-                if(toStr.call(origin[key]) === arrType ){
+            if (typeof (origin[key]) === 'object' && origin[key] !== null) {
+                if (toStr.call(origin[key]) === arrType) {
                     tar[key] = [];
-                }else{
+                } else {
                     tar[key] = {};
                 }
-                deepClone(origin[key],tar[key]);
-            }else{
+                deepClone(origin[key], tar[key]);
+            } else {
                 tar[key] = origin[key];
             }
         }
     }
     return tar;
+}
+// 事件委托
+window.onload = function () {
+    var oUl = document.getElementById("ul1");
+    oUl.onclick = function (ev) {
+        var ev = ev || window.event;
+        var target = ev.target || ev.srcElement;
+        if (target.nodeName.toLowerCase() == 'li') {
+            alert(123);
+            alert(target.innerHTML);
+        }
+    }
 }
