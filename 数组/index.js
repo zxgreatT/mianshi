@@ -52,4 +52,4 @@ function merageSortArr(nums1, m, nums2, n) {
     console.log(nums1)
 }
 merageSortArr(nums1, m, nums2, n)
-// console.log(nums1)
+console.log(nums1)
