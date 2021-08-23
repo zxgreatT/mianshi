@@ -14,9 +14,16 @@ function climbStairs2(n, a = 1, b = 2) {
   }
   return climbStairs2(n - 1, b, a + b)
 }
-console.time('1')
-climbStairs1(20)
-console.timeEnd('1')
-console.time('2')
-climbStairs2(20)
-console.timeEnd('2')
+// console.time('1')
+// climbStairs1(20)
+// console.timeEnd('1')
+// console.time('2')
+// climbStairs2(20)
+// console.timeEnd('2')
+
+function cloneMap(map) {
+  return new Map(JSON.parse(JSON.stringify([...map])))
+}
+const map = new Map([[1,2], ['a', {}]])
+const newMap = cloneMap(map)
+console.log(newMap.get('a') ===  map.get('a'))
