@@ -58,21 +58,38 @@
 // }
 
 // 作用域相关
-'use strict'
-var a = 1
-console.log(a)
-function b ()
-{
-  console.log(a)
-
-  a = 2
-  console.log(a)
-
-  function a() {}
-  console.log(a)
-
-  a = 3
-  console.log(a)
+// 'use strict'
+// var a = 1
+// console.log(a)
+// function b ()
+// {
+//   console.log(a)
+//
+//   a = 2
+//   console.log(a)
+//
+//   function a() {}
+//   console.log(a)
+//
+//   a = 3
+//   console.log(a)
+// }
+// b()
+// console.log(a)
+var fn = null;
+function foo() {
+  var a = 2;
+  function innnerFoo() {
+    console.log(c); // 在这里，试图访问函数bar中的c变量，会抛出错误
+    console.log(a);
+  }
+  fn = innnerFoo; // 将 innnerFoo的引用，赋值给全局变量中的fn
 }
-b()
-console.log(a)
+
+function bar() {
+  var c = 100;
+  fn(); // 此处的保留的innerFoo的引用
+}
+
+foo();
+bar();
