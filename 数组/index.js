@@ -4,13 +4,13 @@
 //     let tempArr = []
 //     for (let val of arr) {
 //         if(Object.prototype.toString.call(val) === '[object Array]') {
-//             tempArr = tempArr.concat(arrBianPing(val)) 
+//             tempArr = tempArr.concat(arrBianPing(val))
 //         } else {
 //             tempArr.push(val)
 //         }
 //     }
 //     return tempArr
-// } 
+// }
 
 // console.log(arrBianPing(arr))
 // console.log( 0.2 + 0.4 === 0.6)
@@ -27,7 +27,7 @@
  * 给你两个有序整数数组 nums1 和 nums2 ，请你将 nums2 合并到 nums1 中，使 num1 成为⼀个有序数组。
  * 初始化 nums1 和 nums2 的元素数ᰁ分别为 m 和 n 。 你可以假设 nums1 有⾜够的空间（空间
  * ⼤⼩⼤于或等于 m + n ）来保存 nums2 中的元素。 leetcode 88
- * @example 
+ * @example
  * 输⼊:
  *  nums1 = [1,2,3,0,0,0], m = 3
  *  nums2 = [2,5,6], n = 3
@@ -53,3 +53,31 @@ function merageSortArr(nums1, m, nums2, n) {
 }
 merageSortArr(nums1, m, nums2, n)
 console.log(nums1)
+
+// 手写一个简单的Array。from https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/from
+function myArrayFrom() {
+  let arrayLike = arguments[0];
+  // 判断第一个参数是不是空
+  if (arrayLike == null) {
+    throw new TypeError("Array.from requires an array-like object - not null or undefined");
+  }
+  let fn = arguments.lenght > 1 ? arguments[1] : undefined;
+  // 判断第二个参数是不是函数
+  if (fn && !(typeof fn === 'function')) {
+    throw new TypeError('Array.from: when provided, the second argument must be a function');
+  }
+  let thisArg =  arguments.lenght > 2 ? arguments[2] : undefined;
+  let len = arrayLike.length;
+  let i = 0, value;
+  let arr = new Array(len);
+  while (i < len) {
+    value = arrayLike[i];
+    if (fn) {
+      arr[i] = !thisArg ? fn(value, i) : fn.call(thisArg, value, i);
+    } else {
+      arr[i] = value;
+    }
+    i++;
+  }
+  return arr;
+}
