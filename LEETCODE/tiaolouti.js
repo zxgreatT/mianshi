@@ -18,7 +18,7 @@ function climbStairs2(n, a = 1, b = 2) {
 // climbStairs1(20)
 // console.timeEnd('1')
 // console.time('2')
-// climbStairs2(20)
+climbStairs2(20)
 // console.timeEnd('2')
 
 function cloneMap(map) {
