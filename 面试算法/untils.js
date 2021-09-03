@@ -25,6 +25,7 @@ function myIntanceof(son, father) {
 
 
 function is(x, y) {
+    debugger
     if (x === y) {
       //运行到1/x === 1/y的时候x和y都为0，但是1/+0 = +Infinity， 1/-0 = -Infinity, 是不一样的
       return 1 / x === 1 / y;
@@ -33,5 +34,6 @@ function is(x, y) {
       //两个都是NaN的时候返回true
       return x !== x && y !== y;
     }
-}  
-console.log(is(5,-5))
+}
+is(5,-5)
+// console.log(is(5,-5))
