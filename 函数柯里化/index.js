@@ -256,3 +256,85 @@ window.onload = function () {
         }
     }
 }
+
+// ecamscript
+function FunctionIsConstructor(fnc) {
+    let isConstructor = true;
+    try {
+        Object instanceof fnc
+    } catch (e) {
+        if (e instanceof TypeError) {
+            isConstructor = false
+        }
+    }
+    return isConstructor
+}
+function BoundFunctionCreate(targetFunction, boundThis, boundArgs) {
+    let proto = Object.getPrototypeOf(targetFunction);
+    let boundFunction = function () {
+        if (new.target) {
+            // 实现构造函数功能
+            if (FunctionIsConstructor(targetFunction)) {
+                return new targetFunction(...boundArgs)
+            } else {
+                throw new TypeError(`${arguments.callee.name} is not a constructor`)
+            }
+        } else {
+            // 实现函数调用功能
+            return targetFunction.call(boundThis, [...boundArgs, ...arguments])
+        }
+    }
+    delete boundFunction.name;
+    Object.setPrototypeOf(boundFunction, proto)
+    return boundFunction;
+}
+function isCallable(Target) {
+    if (typeof Target === 'function') return true;
+    return false;
+}
+function ToInteger(arg) {
+    let number = Number(arg);
+    if (number !== number) return +0;
+    if (number === 0 || number === Infinity || number === -Infinity) return number;
+    return Math.floor(Math.abs(number));
+}
+function SetFunctionName(F, name, prefix) {
+    if (typeof name === 'symbol') {
+        let description = name.description
+        if (description === undefined) {
+            name = ''
+        } else {
+            name = `[${description}]`
+        }
+    }
+    if (prefix) {
+        name = `${prefix} ${name}`
+    }
+    return Object.defineProperty(F, 'name', {
+        value: name,
+        writable: false,
+        enumerable: false,
+        configurable: true
+    })
+}
+function SetFunctionLength(F, Target, args) {
+    let targetHasLength = Target.hasOwnProperty('length');
+    let L;
+    if (targetHasLength) {
+        let targetLen = Target.length;
+        if (typeof targetLen !== 'number') {
+            L = 0;
+        } else {
+            targetLen = ToInteger(targetLen)
+            L = Math.max(0, targetLen - args.length)
+        }
+    } else {
+        L = 0;
+    }
+    Object.defineProperty(F, 'length', {
+        value: L,
+        writable: false,
+        enumerable: false,
+        configurable: true
+    })
+}
