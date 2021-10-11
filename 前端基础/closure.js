@@ -1,12 +1,12 @@
-// function test() {
-//   const a = 1
-//   return function () {
-//     return a
-//   }
-// }
-//
-// const c = test()
-// c()
+function test() {
+  const a = 1
+  return function () {
+    return 1
+  }
+}
+
+const c = test()
+c()
 
 // var theThing = null;
 // var replaceThing = function () {

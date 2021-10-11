@@ -141,3 +141,27 @@ async function foo() {
 }
 
 foo()
+
+new Map([[1,3]]).keys()
+// 手写promise.all
+Promise.all = function (iterator) {
+  return new Promise((res, rej) => {
+    let result = []
+    let index = 0
+    let len = iterator.length
+    if(!len) {
+      res(result)
+      return
+    }
+
+    for(let i;i<len;i++) {
+      Promise.resolve(iterator[i]).then((data) => {
+        result[i] =data
+        index++
+        if(index = len) res(result)
+      }).catch(err => {
+        rej(err)
+      })
+    }
+  })
+}
