@@ -1,11 +1,30 @@
 const a = new Map([[1,2]])
 console.log(a)
-<<<<<<< HEAD
 const b = {
     a: 1,
     b: 2
 }
 Object.getOwnPropertyNames(b)
-=======
 
->>>>>>> 606d1dfeebe7c714f051fc21caf33251e8787425
+
+enum Sex {
+    Man,
+    Woman,
+    UnKnow,
+}
+interface Person {
+    name: string;
+    sex: Sex;
+    age: number;
+}
+
+type MarketPerson = Person & { phone: string };
+type Lucifer = LeetCode;
+type LeetCode<T = {}> = {
+    name: T;
+};
+
+const abc: LeetCode<string> = {name: 'q'};
+// console.log(a)
+// const a: Lucifer<string>;
+export {};
