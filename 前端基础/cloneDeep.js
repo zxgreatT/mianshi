@@ -18,31 +18,31 @@ var testObj = {
 }
 
 // 循环引用的问题
-let obj = {
-  reg : /^asd$/,
-  fun: function(){},
-  syb:Symbol('foo'),
-  asd:'asd'
-};
-let cp = JSON.parse(JSON.stringify(obj));
-// console.log(cp);
-
-
-function isObject(obj) {
-  return obj !== null && typeof obj === 'object'
-}
-
-function cloneDeep(target) {
-  if(!isObject(target)) {
-    return target
-  }
-  let result = Array.isArray(target) ? [] : {}
-  const keys = Object.keys(target)
-  for(let i = 0;i < keys.length;i++) {
-    result[keys[i]] = cloneDeep(target[keys[i]])
-  }
-  return  result
-}
+// let obj = {
+//   reg : /^asd$/,
+//   fun: function(){},
+//   syb:Symbol('foo'),
+//   asd:'asd'
+// };
+// let cp = JSON.parse(JSON.stringify(obj));
+// // console.log(cp);
+//
+//
+// function isObject(obj) {
+//   return obj !== null && typeof obj === 'object'
+// }
+//
+// function cloneDeep(target) {
+//   if(!isObject(target)) {
+//     return target
+//   }
+//   let result = Array.isArray(target) ? [] : {}
+//   const keys = Object.keys(target)
+//   for(let i = 0;i < keys.length;i++) {
+//     result[keys[i]] = cloneDeep(target[keys[i]])
+//   }
+//   return  result
+// }
 
 // console.log(testObj, cloneDeep(testObj))
 // 解决深度clone循环引用的相同引用的问题
@@ -97,22 +97,71 @@ function deepCopy(target, map = new Map()) {
 
 console.log(deepCopy(target))
 
-Function.prototype.myBind = function (context, ...args) {
-  const fn = this
-  return function newFn(...args1) {
+// Function.prototype.myBind = function (context, ...args) {
+//   const fn = this
+//   return function newFn(...args1) {
+//     if(new.target) {
+//       return new fn(...args, ...args1)
+//     }
+//     Function.prototype.apply.call(fn, context, [...args, ...args1])
+//   }
+// }
+Function.prototype.myBind = function (context, ...outerArgs) {
+  // this->func context->obj outerArgs->[10,20]
+  let self = this
+  // 返回一个函数
+  return function F(...innerArgs) { //返回了一个函数，...innerArgs为实际调用时传入的参数
+    // 考虑new的方式
     if(new.target) {
-      return new fn(...args, ...args1)
+      console.log(this , self)
+      return new self(...outerArgs, ...innerArgs)
     }
-    Function.prototype.apply.call(fn, context, [...args, ...args1])
+    // 把func执行，并且改变this即可
+    return self.apply(context, [...outerArgs, ...innerArgs]) //返回改变了this的函数，参数合并
   }
 }
 
-function test(a, b) {
-  console.log(a, b)
+var value = 2;
+var foo = {
+  value: 1
+};
+function bar(name, age) {
+  this.habit = 'shopping';
+  console.log(this.value);
+  console.log(name);
+  console.log(age);
 }
-const test1 = test.myBind(null ,1)
-// test1(2)
-const obj1 = new test1(2)
+bar.prototype.friend = 'kevin';
+
+var bindFoo = bar.bind(foo, 'Jack');
+var obj = new bindFoo(20);
+// undefined
+// Jack
+// 20
+
+obj.habit;
+// shopping
+
+obj.friend;
+// kevin
+console.log(obj.habit,obj.friend)
+// function test(a, b) {
+//   this.a = a
+//   this.b = b
+//   // console.log(this.a, this.b)
+// }
+//
+// var foo = {}
+// test.prototype.say = function () {
+//   console.log(this.a)
+// }
+// const test1 = test.bind(foo ,1)
+// // test1(2)
+// const obj1 = new test1(2)
+// console.log(obj1)
+// obj1.say()
+// const test2 = test.bind(null ,1)
+// new test2(2)
 
 const test2 = test.bind(null ,1)
 new test2(2)
