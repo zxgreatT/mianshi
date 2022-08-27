@@ -27,6 +27,32 @@
       }
     })
   }
+  // ajax请求
+
+
+
+
+  function promsieAll(iterable) {
+    return new Promise((res, rej) => {
+      const result = []
+      const len = iterable.length
+      let index = 0
+      if(!len) {
+        res(result)
+        return
+      }
+
+      for(let i = 0;i < len; i++) {
+        ajax(iterable[i]).then((data) => {
+          result[i] = data
+          index++
+          if(index === len) res(result)
+        }, (err) => {
+          rej(err)
+        })
+      }
+    })
+  }
   // 复杂版 支持哪些所有的迭代对象
   function promsieAll(iterable) {
     return new Promise((res, rej) => {
@@ -129,3 +155,22 @@ Promise.allSettled1([test1, test2,test3]).then((data) => {
   console.log(data)
 })
 
+
+// ajax
+function ajax(url) {
+  return new Promise((res, rej) => {
+    const xhr = new XMLHttpRequest()
+    xhr.open('GET', url)
+    xhr.onload = () => {
+      if(xhr.status === 200) {
+        res(xhr.response)
+      } else {
+        rej(xhr.statusText)
+      }
+    }
+    xhr.onerror = () => {
+      rej(xhr.statusText)
+    }
+    xhr.send()
+  })
+}

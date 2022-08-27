@@ -28,3 +28,9 @@ const abc: LeetCode<string> = {name: 'q'};
 // console.log(a)
 // const a: Lucifer<string>;
 export {};
+
+const castArray = <T>(value: T | T[]): T[] => (Array.isArray(value) ? value : [value]);
+console.log(castArray(1))
+castArray(1); // [1]
+castArray([1, 2, 3]); // [1, 2, 3]
+console.log(123123)

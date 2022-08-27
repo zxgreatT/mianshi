@@ -13,7 +13,6 @@ function add() {
 
 // console.log(add(1, 2, 3) + 1)
 
-
 Array.prototype.myMap = function (callback, context) {
   // const arr = Array.from(this)
   const arr = Array.prototype.slice.call(this)
