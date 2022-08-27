@@ -95,7 +95,7 @@ function deepCopy(target, map = new Map()) {
   }
 }
 
-// console.log(deepCopy(target))
+console.log(deepCopy(target))
 
 // Function.prototype.myBind = function (context, ...args) {
 //   const fn = this
@@ -163,3 +163,63 @@ console.log(obj.habit,obj.friend)
 // const test2 = test.bind(null ,1)
 // new test2(2)
 
+const test2 = test.bind(null ,1)
+new test2(2)
+
+function myNew(fn, ...args) {
+  const obj = Object.create(fn.prototype)
+  const result = fn.call(obj, ...args)
+  return typeof result === 'object' ? result : obj
+}
+
+// 类的继承
+function Parent(name) {
+  this.parentName = name
+}
+
+function Son(name, parent) {
+  Parent.call(this, name)
+}
+
+Son.prototype = Object.create(Parent.prototype)
+Son.prototype.constructor = Son
+
+Promise.resolve = (params) => {
+  if(params instanceof Promise) return params
+  return new Promise((res, rej) => {
+    if(params && params.then && typeof params.then === 'function') {
+      params.then(res, rej)
+    } else {
+      res(params)
+    }
+  })
+}
+
+Promise.prototype.finally = function(callback) {
+  this.then(value => {
+    return Promise.resolve(callback()).then(() => {
+      return value;
+    })
+  }, error => {
+    return Promise.resolve(callback()).then(() => {
+      throw error;
+    })
+  })
+}
+
+function bubbleSort(list) {
+  if(!list?.length) {
+    return []
+  }
+  let len = list.length
+  for(var i = 0;i < list.length; i++) {
+    for (var j = 0;j < len - i;j++) {
+      if(list[j] > list[j + 1]) {
+       [list[j], list[j+1]] = [list[j + 1], list[j]]
+      }
+    }
+  }
+  return list
+}
+
+console.log(bubbleSort(null))

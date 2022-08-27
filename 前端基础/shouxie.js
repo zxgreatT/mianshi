@@ -16,5 +16,34 @@ function debounce(fn, delay) {
 
 /**
  * 节流
- *
+ *  在规定时间内，只能触发一次函数，如果这个单位时间内触发多次函数，只有一次生效
  */
+function throtle(fn, delay) {
+  let flag = null
+  return function (...args) {
+    if(!flag) {
+      flag = true
+      setTimeout(() => {
+        fn.call(this, ...args)
+        flag = false
+      }, delay)
+    } else {
+      return
+    }
+  }
+}
+
+// 手写instanceof
+function myInstanceof(a, b) {
+  let proto = Object.getPrototypeOf(a)
+  while(true) {
+    if(!proto) {
+      return false
+    }
+
+    if(proto === b.prototype) return true
+
+    proto = Object.getPrototypeOf(proto)
+  }
+}
+

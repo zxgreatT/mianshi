@@ -6,54 +6,9 @@
         <entry key="/var/folders/ct/8hlfzs516yl5ptcsjl5kmxhw0000gn/T/leetcode/editor/cn/[146]LRU 缓存机制.js">
           <value>
             <LeetcodeEditor>
-              <option name="contentPath" value="/var/folders/ct/8hlfzs516yl5ptcsjl5kmxhw0000gn/T/leetcode/editor/cn/doc/content/[146]LRU 缓存机制.md" />
-              <option name="path" value="/var/folders/ct/8hlfzs516yl5ptcsjl5kmxhw0000gn/T/leetcode/editor/cn/[146]LRU 缓存机制.js" />
-              <option name="questionId" value="146" />
-            </LeetcodeEditor>
-          </value>
-        </entry>
-        <entry key="/var/folders/ct/8hlfzs516yl5ptcsjl5kmxhw0000gn/T/leetcode/editor/cn/[167]两数之和 II - 输入有序数组.js">
-          <value>
-            <LeetcodeEditor>
-              <option name="contentPath" value="/var/folders/ct/8hlfzs516yl5ptcsjl5kmxhw0000gn/T/leetcode/editor/cn/doc/content/[167]两数之和 II - 输入有序数组.md" />
-              <option name="path" value="/var/folders/ct/8hlfzs516yl5ptcsjl5kmxhw0000gn/T/leetcode/editor/cn/[167]两数之和 II - 输入有序数组.js" />
-              <option name="questionId" value="167" />
-            </LeetcodeEditor>
-          </value>
-        </entry>
-        <entry key="/var/folders/ct/8hlfzs516yl5ptcsjl5kmxhw0000gn/T/leetcode/editor/cn/[19]删除链表的倒数第 N 个结点.js">
-          <value>
-            <LeetcodeEditor>
-              <option name="contentPath" value="/var/folders/ct/8hlfzs516yl5ptcsjl5kmxhw0000gn/T/leetcode/editor/cn/doc/content/[19]删除链表的倒数第 N 个结点.md" />
-              <option name="path" value="/var/folders/ct/8hlfzs516yl5ptcsjl5kmxhw0000gn/T/leetcode/editor/cn/[19]删除链表的倒数第 N 个结点.js" />
-              <option name="questionId" value="19" />
-            </LeetcodeEditor>
-          </value>
-        </entry>
-        <entry key="/var/folders/ct/8hlfzs516yl5ptcsjl5kmxhw0000gn/T/leetcode/editor/cn/[1]两数之和.js">
-          <value>
-            <LeetcodeEditor>
-              <option name="contentPath" value="/var/folders/ct/8hlfzs516yl5ptcsjl5kmxhw0000gn/T/leetcode/editor/cn/doc/content/[1]两数之和.md" />
-              <option name="path" value="/var/folders/ct/8hlfzs516yl5ptcsjl5kmxhw0000gn/T/leetcode/editor/cn/[1]两数之和.js" />
+              <option name="contentPath" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/doc/content/[1]两数之和.md" />
+              <option name="path" value="$USER_HOME$/AppData/Local/Temp/leetcode/editor/cn/[1]两数之和.js" />
               <option name="questionId" value="1" />
-            </LeetcodeEditor>
-          </value>
-        </entry>
-        <entry key="/var/folders/ct/8hlfzs516yl5ptcsjl5kmxhw0000gn/T/leetcode/editor/cn/[2]两数相加.js">
-          <value>
-            <LeetcodeEditor>
-              <option name="contentPath" value="/var/folders/ct/8hlfzs516yl5ptcsjl5kmxhw0000gn/T/leetcode/editor/cn/doc/content/[2]两数相加.md" />
-              <option name="path" value="/var/folders/ct/8hlfzs516yl5ptcsjl5kmxhw0000gn/T/leetcode/editor/cn/[2]两数相加.js" />
-              <option name="questionId" value="2" />
-            </LeetcodeEditor>
-          </value>
-        </entry>
-        <entry key="/var/folders/ct/8hlfzs516yl5ptcsjl5kmxhw0000gn/T/leetcode/editor/cn/[66]加一.js">
-          <value>
-            <LeetcodeEditor>
-              <option name="contentPath" value="/var/folders/ct/8hlfzs516yl5ptcsjl5kmxhw0000gn/T/leetcode/editor/cn/doc/content/[66]加一.md" />
-              <option name="path" value="/var/folders/ct/8hlfzs516yl5ptcsjl5kmxhw0000gn/T/leetcode/editor/cn/[66]加一.js" />
-              <option name="questionId" value="66" />
             </LeetcodeEditor>
           </value>
         </entry>
