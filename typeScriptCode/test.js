@@ -14,6 +14,7 @@ var Sex;
     Sex[Sex["UnKnow"] = 2] = "UnKnow";
 })(Sex || (Sex = {}));
 var abc = { name: 'q' };
+console.log(123123123123123);
 var castArray = function (value) { return (Array.isArray(value) ? value : [value]); };
 console.log(castArray(1));
 castArray(1); // [1]
