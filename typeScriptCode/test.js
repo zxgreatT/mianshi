@@ -20,3 +20,4 @@ console.log(castArray(1));
 castArray(1); // [1]
 castArray([1, 2, 3]); // [1, 2, 3]
 console.log(123123);
+console.log('merges');
