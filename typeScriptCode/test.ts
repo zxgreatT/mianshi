@@ -29,3 +29,4 @@ const abc: LeetCode<string> = {name: 'q'};
 // const a: Lucifer<string>;
 export {};
 console.log(123123123123123)
+console.log('stash')

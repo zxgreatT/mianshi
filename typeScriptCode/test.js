@@ -15,3 +15,4 @@ var Sex;
 })(Sex || (Sex = {}));
 var abc = { name: 'q' };
 console.log(123123123123123);
+console.log('stash');
