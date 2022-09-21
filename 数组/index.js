@@ -81,3 +81,5 @@ function myArrayFrom() {
   }
   return arr;
 }
+
+console.log(123)
