@@ -15,6 +15,7 @@ var Sex;
 })(Sex || (Sex = {}));
 var abc = { name: 'q' };
 console.log(123123123123123);
+console.log('stash');
 var castArray = function (value) { return (Array.isArray(value) ? value : [value]); };
 console.log(castArray(1));
 castArray(1); // [1]
