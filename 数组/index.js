@@ -83,3 +83,4 @@ function myArrayFrom() {
 }
 
 const a = 123123
+console.log(123)
