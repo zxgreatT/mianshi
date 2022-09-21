@@ -81,3 +81,5 @@ function myArrayFrom() {
   }
   return arr;
 }
+
+const a = 123123
