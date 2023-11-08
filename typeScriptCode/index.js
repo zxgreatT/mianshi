@@ -38,4 +38,5 @@ var httpMethods = methods.reduce(function (map, method) {
     };
     return map;
 }, {});
+console.log(3123);
 console.log(123123);

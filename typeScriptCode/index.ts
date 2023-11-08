@@ -49,4 +49,5 @@ const httpMethods: IHttp = methods.reduce((map: any, method: string) => {
   }
   return map
 }, {})
+console.log(3123)
 console.log(123123)

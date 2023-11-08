@@ -1,3 +1,10 @@
+/*
+ * @Description: 
+ * @Author: 涧牛
+ * @Date: 2021-11-23 14:46:27
+ * @LastEditTime: 2023-05-22 11:13:11
+ * @LastEditors: 涧牛
+ */
 /**
  * 函数柯里化
  *
@@ -73,3 +80,17 @@ console.log(test(3))
 // })
 // console.log(a)
 
+// 多参数柯里化；
+const curry = function(fn){
+    return function curriedFn(...args){
+        if(args.length<fn.length){
+            return function(){
+                return curriedFn(...args.concat([...arguments]));
+            }
+        }
+        return fn(...args);
+    }
+}
+const fn = (x,y,z,a)=>x+y+z+a;
+const myfn = curry(fn);
+console.log(myfn(1)(2)(3)(1));
