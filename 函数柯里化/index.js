@@ -338,3 +338,5 @@ function SetFunctionLength(F, Target, args) {
         configurable: true
     })
 }
+
+console.log('test123')
